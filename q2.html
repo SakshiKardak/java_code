@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Registration</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Employee Registration</h2>
+
+<form id="registrationForm" onsubmit="return validateForm()">
+    <label for ="name">Name of the employee:</label>
+    <input type="text" id="name" name="name" required>
+    <span id="nameError" class="error"></span>
+    <br>
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required>
+    <span id="dobError" class="error"></span>
+    <br>
+
+    <label for="joiningDate">Joining Date:</label>
+    <input type="date" id="joiningDate" name="joiningDate" required>
+    <span id="joiningDateError" class="error"></span>
+    <br>
+
+    <label for="salary">Salary:</label>
+    <input type="number" id="salary" name="salary" required>
+    <span id="salaryError" class="error"></span>
+    <br>
+
+    <input type="submit" value="Submit">
+</form>
+
+<script>
+    function validateForm() {
+        var name = document.getElementById("name").value;
+        var dob = document.getElementById("dob").value;
+        var joiningDate = document.getElementById("joiningDate").value;
+        var salary = document.getElementById("salary").value;
+        var namePattern = /^[a-zA-Z]+$/;
+
+// Validate First Name
+if (!namePattern.test(name)) {
+    document.getElementById("nameError").innerHTML = "First name should contain only alphabets";
+    return false;
+} else {
+    document.getElementById("nameError").innerHTML = "";
+}
+
+
+        // Validate Date of Birth
+        if (!isValidDate(dob)) {
+            document.getElementById("dobError").innerHTML = "Invalid Date of Birth";
+            return false;
+        } else {
+            document.getElementById("dobError").innerHTML = "";
+        }
+
+        // Validate Joining Date
+        if (!isValidDate(joiningDate)) {
+            document.getElementById("joiningDateError").innerHTML = "Invalid Joining Date";
+            return false;
+        } else {
+            document.getElementById("joiningDateError").innerHTML = "";
+        }
+
+        // Validate Salary
+        if (isNaN(salary) || salary <= 0) {
+            document.getElementById("salaryError").innerHTML = "Invalid Salary";
+            return false;
+        } else {
+            document.getElementById("salaryError").innerHTML = "";
+        }
+
+        return true;
+    }
+
+    function isValidDate(dateString) {
+        // Check if the input date string is a valid date
+        var val_date = /^\d{4}-\d{2}-\d{2}$/;
+        return dateString.match(val_date) !== null;
+    }
+</script>
+
+</body>
+</html>

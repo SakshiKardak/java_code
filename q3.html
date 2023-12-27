@@ -1,0 +1,127 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Login Form</h2>
+
+<form id="loginForm" onsubmit="return validateForm()">
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" required>
+    <span id="emailError" class="error"></span>
+    <br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <br>
+
+    <input type="submit" value="Login">
+</form>
+
+<script>
+    function validateForm() {
+        var email = document.getElementById("email").value;
+
+        // Validate Email using Regular Expression
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if (!emailPattern.test(email)) {
+            document.getElementById("emailError").innerHTML = "Invalid email address";
+            return false;
+        } else {
+            document.getElementById("emailError").innerHTML = "";
+        }
+
+        // Additional validations can be added for password, etc.
+
+        return true;
+    }
+</script>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Login Form</h2>
+
+<form id="loginForm" onsubmit="return validateForm()">
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" required>
+    <span id="emailError" class="error"></span>
+    <br>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <span id="nameError" class="error"></span>
+    <br>
+
+    <label for="phone">Phone Number:</label>
+    <input type="text" id="phone" name="phone" required>
+    <span id="phoneError" class="error"></span>
+    <br>
+
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+</form>
+
+<script>
+    function validateForm() {
+        var email = document.getElementById("email").value;
+        var name = document.getElementById("name").value;
+        var phone = document.getElementById("phone").value;
+
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        var namePattern = /^[a-zA-Z\s]+$/;
+        var phonePattern = /^\d{10}$/;
+
+        // Validate Email
+        if (!emailPattern.test(email)) {
+            document.getElementById("emailError").innerHTML = "Invalid Email";
+            return false;
+        } else {
+            document.getElementById("emailError").innerHTML = "";
+        }
+
+        // Validate Name
+        if (!namePattern.test(name)) {
+            document.getElementById("nameError").innerHTML = "Invalid Name";
+            return false;
+        } else {
+            document.getElementById("nameError").innerHTML = "";
+        }
+
+        // Validate Phone Number
+        if (!phonePattern.test(phone)) {
+            document.getElementById("phoneError").innerHTML = "Invalid Phone Number (10 digits)";
+            return false;
+        } else {
+            document.getElementById("phoneError").innerHTML = "";
+        }
+
+        return true;
+    }
+</script>
+
+</body>
+</html>
